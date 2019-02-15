@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_marker_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/marker_back">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/map_marker_custom"/>
+
+    <ImageView
+        android:id="@+id/ivHostImage"
+        android:layout_width="50dp"
+        android:gravity="center"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:background="@drawable/marker_b"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:paddingLeft="2dp"
+        android:padding="7dp"
+        android:paddingRight="2dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivHostImageDefault"
+        android:layout_width="50dp"
+        android:gravity="center"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:background="@drawable/marker_b"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/account"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivHostImageDes"
+        android:layout_width="50dp"
+        android:gravity="center"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:background="@drawable/marker_b"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/where_icon"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:textSize="16sp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        />
+
+
+
+</FrameLayout>
