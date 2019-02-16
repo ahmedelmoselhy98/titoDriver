@@ -562,11 +562,10 @@ ProgressDialog progressDialog;
 
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
         float zoomLevel = (float) 14.0;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), zoomLevel));
     }
-
 
     /**
      * Displays a dialog with error message explaining that the location permission is missing.
@@ -625,6 +624,7 @@ ProgressDialog progressDialog;
             routeInfoTV.setText("distance - "+ route.get(i).getDistanceValue()+" : duration - "+ route.get(i).getDurationValue());
 
             triptime = route.get(i).getDurationValue()+"";
+            Toast.makeText(this, "distance: "+tripDistance, Toast.LENGTH_SHORT).show();
             tripDistance =  route.get(i).getDistanceValue()+"";
 
 
