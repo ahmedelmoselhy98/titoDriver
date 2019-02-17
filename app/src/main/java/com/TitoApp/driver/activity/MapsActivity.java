@@ -244,7 +244,6 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
 //                mMap.addMarker(new MarkerOptions().position(new LatLng(arg0.getLatitude(), arg0.getLongitude())).title("It's Me!"));
                 float zoomLevel = (float) 15.0;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(arg0.getLatitude(), arg0.getLongitude()), zoomLevel));
-
                 progressDialog.dismiss();
                 String GEO_FIRE_REF = GEO_FIRE_DB + "/GeoFire";
                 GeoFire geoFire = new GeoFire(FirebaseDatabase.getInstance().getReference().child("GeoFire"));
@@ -482,11 +481,9 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
             case R.id.logout_lm:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
 
-
                 //to remove the token from the backend if he is not login
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Tokens");
                 ref.child(mFirebaseUser.getUid()).child("token").setValue("");
-
 
                 Intent i = new Intent(MapsActivity.this, LoginActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

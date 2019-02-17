@@ -20,6 +20,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -31,7 +33,6 @@ import com.TitoApp.driver.activity.AcceptOrderActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
 
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -58,26 +59,27 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
         final Intent intent = new Intent(this, AcceptOrderActivity.class);
-        intent.putExtra("order",remoteMessage.getData().get("id"));
-
-
-
+        intent.putExtra("order", remoteMessage.getData().get("id"));
 
 
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.tito_log);
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
-        notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("you have new order")
-                .setContentText("dadadsda")
+        notificationBuilder
+                .setContentTitle("Tito سواق")
+                .setContentText("لقد استقبلت طلب")
+                .setSmallIcon(R.drawable.ic_stat_name)
+                .setLargeIcon(image)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notificationBuilder.build());
+
 
 //            }
 //
@@ -88,23 +90,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //        mFirebaseDatabaseReference.addValueEventListener(postListener);
 
 
-
-
         //todo here the oreo notification
         // Sets an ID for the notification, so it can be updated.
 
         // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = getString(R.string.default_notification_channel_id);
-            NotificationChannel channel = new NotificationChannel(channelId,   "this is the notification ",
+            NotificationChannel channel = new NotificationChannel(channelId, "this is the notification ",
                     NotificationManager.IMPORTANCE_HIGH);
 
-            channel.setDescription("daasdadadsdsa");
+            channel.setDescription("لقد استقبلت طلب");
             notificationManager.createNotificationChannel(channel);
             notificationBuilder.setChannelId(channelId);
+            notificationManager.notify(1, notificationBuilder.build());
+        }else {
+            notificationManager.notify(0, notificationBuilder.build());
         }
-        notificationManager.notify(1, notificationBuilder.build());
-
+//        notificationManager.notify(1, notificationBuilder.build());
 
 
     }

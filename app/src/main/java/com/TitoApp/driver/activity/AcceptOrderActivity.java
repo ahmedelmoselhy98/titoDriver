@@ -91,7 +91,6 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
     private static final String TAG = "google";
 
-
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
 
