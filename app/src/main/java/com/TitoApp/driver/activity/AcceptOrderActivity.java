@@ -224,7 +224,10 @@ ProgressDialog progressDialog;
                 orderStatus = order.getStatus();
 
 
-                if (orderStatus.equals("0")) {
+                if (orderStatus.equals("-1")) {
+                    orderParent.setVisibility(View.GONE);
+                    canceledParent.setVisibility(View.VISIBLE);
+                }else if (orderStatus.equals("0")) {
                     orderParent.setVisibility(View.VISIBLE);
                     canceledParent.setVisibility(View.GONE);
                 } else if (orderStatus.equals("1")) {
