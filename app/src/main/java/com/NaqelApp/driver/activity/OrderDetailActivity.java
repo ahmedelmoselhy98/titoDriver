@@ -151,36 +151,13 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Toast.makeText(this, getCompleteAddressString(tolat,tolang), Toast.LENGTH_SHORT).show();
+
 
     }
 
 
 
-    // get current address by lat and long
-    private String getCompleteAddressString(double LATITUDE, double LONGITUDE) {
-        String strAdd = "";
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
-            if (addresses != null) {
-                Address returnedAddress = addresses.get(0);
-                StringBuilder strReturnedAddress = new StringBuilder("");
 
-                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
-                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
-                }
-                strAdd = strReturnedAddress.toString();
-                Log.w("My C loction address", strReturnedAddress.toString());
-            } else {
-                Log.w("My C loction address", "No Address returned!");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.w("My C loction address", "Canont get Address!");
-        }
-        return strAdd;
-    }
 
 
     @SuppressLint("MissingPermission")

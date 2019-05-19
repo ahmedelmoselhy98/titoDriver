@@ -25,6 +25,10 @@ public class OrderModel {
     private String toLang;
     private String toLat;
 
+    private String cAddress;
+    private String toAddress;
+
+
     private String tripDistance;
     private String tripPrice;
     private String  tripTime;

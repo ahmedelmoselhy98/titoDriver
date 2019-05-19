@@ -13,6 +13,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
@@ -78,6 +79,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -485,6 +487,13 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
         dfUpdateOrder.child("Orders")
                 .child(orderId).child("startTime").setValue(startTime + "");
 
+
+
+        // Todo update start location
+
+        dfUpdateOrder.child("Orders")
+                .child(orderId).child("cAddress").setValue(getCompleteAddressString(clat,clang));
+
         dfUpdateOrder.child("Orders")
                 .child(orderId).child("lat").setValue(clat);
         dfUpdateOrder.child("Orders")
@@ -533,10 +542,19 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
 
 
+
+
+        // Todo update end location
+
+        dfUpdateOrder.child("Orders")
+                .child(orderId).child("toAddress").setValue(getCompleteAddressString(clat,clang));
+
         dfUpdateOrder.child("Orders")
                 .child(orderId).child("toLat").setValue(clat);
         dfUpdateOrder.child("Orders")
                 .child(orderId).child("toLang").setValue(clang);
+
+
 
         dfUpdateOrder.child("Orders")
                 .child(orderId).child("endTime").setValue(endTime + "");
@@ -921,6 +939,31 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
         startActivity(intent);
 
 
+    }
+
+    // get current address by lat and long
+    private String getCompleteAddressString(double LATITUDE, double LONGITUDE) {
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+            if (addresses != null) {
+                Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder("");
+
+                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                }
+                strAdd = strReturnedAddress.toString();
+                Log.w("My C loction address", strReturnedAddress.toString());
+            } else {
+                Log.w("My C loction address", "No Address returned!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.w("My C loction address", "Canont get Address!");
+        }
+        return strAdd;
     }
 
 }
