@@ -13,6 +13,7 @@
 
 
         <include layout="@layout/activity_maps" />
+        <include layout="@layout/accept_dailoge"/>
 
         <FrameLayout
             android:layout_width="match_parent"

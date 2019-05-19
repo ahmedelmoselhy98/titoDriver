@@ -15,6 +15,7 @@
             android:icon="@drawable/credit_card"/>
         <item
             android:title="رحلاتي"
+            android:id="@+id/drawer_myorders"
             android:icon="@drawable/history"/>
         <!--<item-->
             <!--android:title="Setting"-->

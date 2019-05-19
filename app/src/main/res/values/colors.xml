@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F8CA46</color>
-    <color name="colorPrimaryDark">#F8CA46</color>
-    <color name="colorAccent">#7DC855</color>
+    <color name="colorPrimary">#3E5794</color>
+    <color name="colorPrimaryDark">#3E5794</color>
+    <color name="colorAccent">#FFCB02</color>
 
     <!--here the login colors-->
     <color name="login_facebook">#4A6EA9</color>
     <color name="login_google">#E74C3C</color>
-    <color name="login_mail">#7DC855</color>
+    <color name="login_mail">#FFCB02</color>
 
     <!--here the map colors-->
     <color name="menu_color">#000000</color>
@@ -27,6 +27,10 @@
     <color name="yellow_star">#FFCB02</color>
 
 
+    <color name="back_categ">#f5e6a9</color>
+
+
+
 
     <color name="wight">#ffffff</color>
     <color name="wight_dark">#ececec</color>
@@ -36,7 +40,7 @@
 
     <color name="gray">#000000</color>
     <color name="navigation_back">#FFF</color>
-    <color name="gray_text">#000000</color>
+    <color name="gray_text">#747474</color>
     <color name="black">#000</color>
 
 

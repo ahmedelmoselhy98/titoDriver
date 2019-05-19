@@ -95,6 +95,7 @@
                             <ImageView
                                 android:id="@+id/favorImage"
                                 android:layout_width="120dp"
+                                android:padding="5dp"
                                 android:scaleType="centerCrop"
                                 android:layout_height="120dp" />
                             <de.hdodenhof.circleimageview.CircleImageView
@@ -140,6 +141,7 @@
                                 android:id="@+id/favorImage1"
                                 android:layout_width="120dp"
                                 android:scaleType="centerCrop"
+                                android:padding="5dp"
                                 android:layout_height="120dp" />
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/take_photo_profile1"

@@ -19,6 +19,9 @@
             android:layoutDirection="ltr"
             android:orientation="vertical">
 
+
+
+
             <LinearLayout
                 android:id="@+id/parent_id"
                 android:layout_width="match_parent"
@@ -27,6 +30,9 @@
                 android:layout_marginRight="30dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
+
+
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -57,6 +63,7 @@
                         android:id="@+id/favorImage"
                         android:layout_width="120dp"
                         android:scaleType="centerCrop"
+                        android:padding="5dp"
                         android:layout_height="120dp" />
                     <ImageView
                         android:id="@+id/take_photo_profile"
@@ -68,7 +75,63 @@
 
                 </FrameLayout>
 
+                <android.support.v7.widget.CardView
+                    android:id="@+id/selectcategCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="5dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp">
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        android:background="@drawable/back_order">
+
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="25dp"
+                            android:layout_gravity="left|center"
+                            android:layout_marginRight="10dp"
+                            app:srcCompat="@drawable/chevron_down"/>
+
+
+
+
+
+                        <TextView
+                            android:id="@+id/categTV"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="40dp"
+                            android:gravity="center|right"
+                            android:textSize="16sp"
+                            android:text="ونش"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/black" />
+
+
+
+
+
+                        <ImageView
+                            android:id="@+id/categIV"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="35dp"
+                            android:layout_gravity="left|center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/winnch"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
 
                 <LinearLayout

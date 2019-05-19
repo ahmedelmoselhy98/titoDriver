@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
+    android:background="@color/colorPrimary"
     android:layoutDirection="ltr">
 
     <!--<view-->
@@ -41,7 +41,7 @@
                     android:gravity="center"
                     android:layout_marginTop="?actionBarSize"
                     android:layout_gravity="center"
-                    android:src="@drawable/tito_logo"/>
+                    android:src="@drawable/looogooo"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -55,7 +55,6 @@
                         android:layout_height="40dp"
 
                         android:background="@drawable/signup_mail_back"
-                        android:drawablePadding="10dp"
                         android:hint="الايميل"
                         android:inputType="textEmailAddress"
                         android:paddingRight="30dp"
@@ -92,8 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/signup_mail_back"
-                    android:drawablePadding="10dp"
-                    android:hint="الباسورد"
+                    android:hint="كلمه المرور "
                     android:gravity="right|center"
                     android:inputType="textPassword"
                     android:paddingRight="30dp"
@@ -132,21 +130,21 @@
 
 
                 <TextView
+                    android:id="@+id/forgotTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:gravity="center"
-                    android:text="forgot password?"
-                    android:visibility="gone"
+                    android:text=" هل نسيت كلمة المرور ؟ "
+                    android:visibility="visible"
                     android:textColor="@color/wight_dark"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/signUpBtn"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
                     android:layout_marginTop="40dp"
                     android:layout_marginBottom="20sp"
                     android:text="ليس لديك حساب تسجيل مستخدم جديد انضم الينا كسائق"

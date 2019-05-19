@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/back3">
+    android:background="@color/colorPrimary">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/main_scrollview"
@@ -32,7 +32,7 @@
                     android:layout_height="100dp"
                     android:layout_marginTop="?actionBarSize"
                     android:gravity="center"
-                    android:src="@drawable/tito_logo" />
+                    android:src="@drawable/looogooo" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -54,7 +54,6 @@
                             android:layout_marginLeft="2dp"
                             android:layout_marginRight="2dp"
                             android:background="@drawable/back_signup"
-                            android:drawablePadding="10dp"
                             android:gravity="center|right"
                             android:hint="الاسم الاول "
                             android:paddingLeft="10dp"
@@ -85,7 +84,6 @@
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/back_signup"
-                        android:drawablePadding="10dp"
                         android:gravity="center|right"
                         android:hint="الاسم الاخير"
                         android:paddingLeft="10dp"
@@ -118,7 +116,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:background="@drawable/back_signup"
-                    android:drawablePadding="10dp"
                     android:hint="الايميل"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="10dp"
@@ -149,7 +146,6 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/back_signup"
-                    android:drawablePadding="10dp"
                     android:gravity="center|right"
                     android:hint="كلمه السر"
                     android:inputType="textPassword"
@@ -182,7 +178,6 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/back_signup"
-                    android:drawablePadding="10dp"
                     android:gravity="center|right"
                     android:hint="التليفون"
                     android:inputType="phone"
@@ -212,7 +207,6 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/back_signup"
-                    android:drawablePadding="10dp"
                     android:gravity="center|right"
                     android:hint="العنوان"
                     android:inputType="text"
