@@ -46,7 +46,7 @@
     />
 
             <TextView
-                android:id="@+id/my_vacation_card_approved"
+                android:id="@+id/priceTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="right|center_vertical"
@@ -72,6 +72,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:id="@+id/imageIV"
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/looogooo" />
 
@@ -79,7 +80,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="hazem habeb"
+                android:text="ahme mohamed"
+                android:id="@+id/nameTV"
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
@@ -90,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
+                android:id="@+id/rateRB"
                 android:rating="3" />
                  />
 

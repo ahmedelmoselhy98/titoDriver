@@ -16,7 +16,7 @@
 
 
         <TextView
-            android:id="@+id/my_vacation_card_request_date"
+            android:id="@+id/dateTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -28,7 +28,7 @@
 
 
         <TextView
-            android:id="@+id/my_vacation_card_approved"
+            android:id="@+id/priceTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -82,7 +82,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/my_vacation_card_from"
+                android:id="@+id/fromTV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="start|center_vertical"
@@ -93,7 +93,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/my_vacation_card_to"
+                android:id="@+id/toTV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="start|center_vertical"

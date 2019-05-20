@@ -40,6 +40,7 @@ import com.NaqelApp.driver.model.CategoryModel;
 import com.NaqelApp.driver.model.OrderModel;
 import com.NaqelApp.driver.model.User;
 import com.NaqelApp.driver.util.PermissionUtils;
+import com.NaqelApp.driver.util.SharedPrefDueDate;
 import com.bumptech.glide.Glide;
 import com.directions.route.Route;
 import com.directions.route.RouteException;
@@ -106,20 +107,25 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
     CardView startParent;
 
     //here to add the client data
-    @BindView(R.id.clientIV)CircleImageView clientIV;
-    @BindView(R.id.clientNameTV)TextView clientNameTV;
-    @BindView(R.id.callClientBtn)FloatingActionButton callClientBtn;
+    @BindView(R.id.clientIV)
+    CircleImageView clientIV;
+    @BindView(R.id.clientNameTV)
+    TextView clientNameTV;
+    @BindView(R.id.callClientBtn)
+    FloatingActionButton callClientBtn;
     @BindView(R.id.defaultImage1)
     ImageView defaultImage1;
-    @BindView(R.id.directionClientBtn)Button directionClientBtn;
-
+    @BindView(R.id.directionClientBtn)
+    Button directionClientBtn;
 
 
     //todo here to add the during trip
-    @BindView(R.id.destinationBTn)Button destinationBTn;
-    @BindView(R.id.userGuideTV)TextView userGuideTV;
-    @BindView(R.id.endParent)CardView endParent;
-
+    @BindView(R.id.destinationBTn)
+    Button destinationBTn;
+    @BindView(R.id.userGuideTV)
+    TextView userGuideTV;
+    @BindView(R.id.endParent)
+    CardView endParent;
 
 
     @BindView(R.id.routeInfoTV)
@@ -158,6 +164,8 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
     private long FASTEST_INTERVAL = 2000; /* 2 sec */
 
 
+    SharedPrefDueDate pref;
+
     double clat, clang;
     double tolat, tolang;
 
@@ -179,6 +187,8 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
         startLocationUpdates();
 
+
+        pref = new SharedPrefDueDate(this);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("جاري تحديد الموقع...");
@@ -306,8 +316,6 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
                         });
 
 
-
-
                     } else {
                         orderParent.setVisibility(View.GONE);
                         canceledParent.setVisibility(View.VISIBLE);
@@ -336,12 +344,12 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
                                 .build();
                         routing.execute();
 
-                        if (tolat==0||tolang==0){
+                        if (tolat == 0 || tolang == 0) {
                             destinationBTn.setVisibility(View.GONE);
                             userGuideTV.setVisibility(View.VISIBLE);
                             mMap.clear();
 
-                        }else {
+                        } else {
                             destinationBTn.setVisibility(View.VISIBLE);
                             userGuideTV.setVisibility(View.GONE);
 
@@ -413,10 +421,6 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
                 //todo here to put the rate ya m3lem
 
 
-
-
-
-
             }
 
             @Override
@@ -457,6 +461,8 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
         dfUpdateOrder = FirebaseDatabase.getInstance().getReference();
 
 
+        pref.setOrderId(order.getId());
+
         dfUpdateOrder.child("Orders")
                 .child(orderId).child("driverId").setValue(mFirebaseUser.getUid());
 
@@ -482,22 +488,24 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
         long startTime = System.currentTimeMillis();
 
+
+
         order.setStartTime(startTime + "");
 
         dfUpdateOrder.child("Orders")
                 .child(orderId).child("startTime").setValue(startTime + "");
 
 
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
         // Todo update start location
+        dfUpdateOrder.child("Orders")
+                .child(orderId).child("cAddress").setValue(getCompleteAddressString(clat, clang));
 
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("cAddress").setValue(getCompleteAddressString(clat,clang));
-
+                .child(orderId).child("lat").setValue("" + clat);
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("lat").setValue(clat);
-        dfUpdateOrder.child("Orders")
-                .child(orderId).child("lang").setValue(clang);
+                .child(orderId).child("lang").setValue("" + clang);
 
 
         dfUpdateOrder.child("Orders")
@@ -509,7 +517,8 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
     /**
      * action the call button before start the trip and after accept the trip
      */
-    @OnClick(R.id.callClientBtn)void callClientAction(){
+    @OnClick(R.id.callClientBtn)
+    void callClientAction() {
         Intent intent = new Intent(Intent.ACTION_CALL);
 
         // here to get the data of the client
@@ -535,25 +544,22 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
         dfUpdateOrder = FirebaseDatabase.getInstance().getReference();
 
+        pref.setOrderId("");
 
         long endTime = System.currentTimeMillis();
 
         order.setEndTime(endTime + "");
 
 
-
-
-
         // Todo update end location
 
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("toAddress").setValue(getCompleteAddressString(clat,clang));
+                .child(orderId).child("toAddress").setValue(getCompleteAddressString(clat, clang));
 
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("toLat").setValue(clat);
+                .child(orderId).child("toLat").setValue(""+clat);
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("toLang").setValue(clang);
-
+                .child(orderId).child("toLang").setValue(""+clang);
 
 
         dfUpdateOrder.child("Orders")
@@ -603,11 +609,11 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
                     //todo here to go to the finish activity
 
-                    Intent intent = new Intent(AcceptOrderActivity.this,FinishActivity.class);
+                    Intent intent = new Intent(AcceptOrderActivity.this, FinishActivity.class);
 
 
-                    intent.putExtra("price",trpPrice);
-                    intent.putExtra("order",orderId);
+                    intent.putExtra("price", trpPrice);
+                    intent.putExtra("order", orderId);
 
                     startActivity(intent);
 
@@ -673,7 +679,7 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
                     clat = arg0.getLatitude();
                     clang = arg0.getLongitude();
-                    Toast.makeText(AcceptOrderActivity.this, "clat:"+clat, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AcceptOrderActivity.this, "clat:" + clat, Toast.LENGTH_SHORT).show();
                     firstZoom = 1;
                 }
 
@@ -772,13 +778,11 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
             tripDistance = (route.get(i).getDistanceValue() / 1000) + "";
 
 
-
 //            Log.d("google","this is the distance and duration  "+ route.get(i).getDistanceText()+ route.get(i).getDurationText());
 
 
 //            Toast.makeText(getApplicationContext(),"Route "+ (i+1) +": distance - "+ route.get(i).getDistanceValue()+": duration - "+ route.get(i).getDurationValue(),Toast.LENGTH_SHORT).show();
         }
-
 
 
 //        Log.d("google", "this is the distance and duration00000000  " + route.get(0).getDistanceValue() + "       " + route.get(0).getDurationValue());
@@ -792,18 +796,14 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 //        getEstimatedPrice();
 
 
-
-
-
-        LatLng from_Latlng=new LatLng(clat,clang);
-        LatLng to_Latlong=new LatLng(tolat,tolang);
+        LatLng from_Latlng = new LatLng(clat, clang);
+        LatLng to_Latlong = new LatLng(tolat, tolang);
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         builder.include(from_Latlng);
         builder.include(to_Latlong);
         LatLngBounds bounds = builder.build();
         mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(route.get(0).getLatLgnBounds(), 10), 2000, null);
-
 
 
         // Start marker

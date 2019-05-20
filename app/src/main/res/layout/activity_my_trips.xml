@@ -47,14 +47,4 @@
 
     <include layout="@layout/include_myorders"/>
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:visibility="gone"
-        android:indeterminateTint="?android:colorAccent"
-        android:indeterminateTintMode="src_in" />
-
 </android.support.design.widget.CoordinatorLayout>

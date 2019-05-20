@@ -12,8 +12,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Looper;
 import android.support.annotation.DrawableRes;
@@ -26,18 +24,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.NaqelApp.driver.R;
 import com.NaqelApp.driver.model.OrderModel;
 import com.NaqelApp.driver.model.User;
+import com.NaqelApp.driver.model.OrderRate;
 import com.NaqelApp.driver.util.PermissionUtils;
+import com.bumptech.glide.Glide;
 import com.directions.route.Route;
 import com.directions.route.RouteException;
 import com.directions.route.Routing;
 import com.directions.route.RoutingListener;
-import com.firebase.geofire.GeoFire;
-import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -62,40 +61,44 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
         OnMapReadyCallback, RoutingListener {
 
 
+    @BindView(R.id.priceTV)
+    TextView priceTV;
+    @BindView(R.id.nameTV)
+    TextView nameTV;
+    @BindView(R.id.imageIV)
+    CircleImageView imageIV;
+    @BindView(R.id.rateRB)
+    RatingBar rateRB;
 
     private GoogleMap mMap;
-
-
     private static final String TAG = "google";
-
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
-
-
     private String orderId;
 
-
     private DatabaseReference df, df1, dfUpdateOrder;
-
     private String userImageString = "";
 
     private String orderStatus = "";
-
 
     private int firstZoom;
 
@@ -113,7 +116,7 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
     private static final String GEO_FIRE_DB = "https://tito-c762f.firebaseio.com/";
 
     double clat, clang;
-    double tolat=30.044281, tolang = 31.340002;
+    double tolat = 0.0, tolang = 0.0;
 
     ProgressDialog progressDialog;
 
@@ -124,8 +127,7 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
 
     //the user model
     User user;
-
-
+    private DatabaseReference ref;
 
 
     @Override
@@ -139,10 +141,30 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
         firstZoom = 0;
         polylines = new ArrayList<>();
 
+        ref = FirebaseDatabase.getInstance().getReference();
+
+
+        order = (OrderModel) getIntent().getSerializableExtra("model");
+
+
+        tolat = Double.parseDouble(order.getToLat());
+        tolang = Double.parseDouble(order.getToLang());
+
+        clat = Double.parseDouble(order.getLat());
+        clang = Double.parseDouble(order.getLang());
+
+        if (!order.getTripPrice().isEmpty())
+            priceTV.setText("SAR " + order.getTripPrice());
+        else
+            priceTV.setText("SAR 0.0");
+
+        getUserInfo();
+
+        getOrderRate();
 
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("جاري تحديد الموقع...");
+        progressDialog.setMessage("جاري رسم الطريق...");
         progressDialog.show();
 
 
@@ -152,12 +174,58 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
         mapFragment.getMapAsync(this);
 
 
+    }
+
+
+    private void getUserInfo() {
+        ref.child("users").child(order.getUserId()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    User model = dataSnapshot.getValue(User.class);
+
+                    nameTV.setText(model.getName());
+                    if (!model.getPhotoUrl().isEmpty())
+                        Glide.with(OrderDetailActivity.this).load(model.getPhotoUrl()).into(imageIV);
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
 
+    private void getOrderRate() {
+        ref.child("Ratings").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        if (snapshot.exists()) {
+                            OrderRate rate = snapshot.getValue(OrderRate.class);
+                            if (rate.getOrderId().equals(order.getId()))
+                                rateRB.setRating(rate.getRate());
+                        }
+                    }
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
 
     @SuppressLint("MissingPermission")
@@ -202,10 +270,10 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
                     float zoomLevel = (float) 15.0;
 
                     progressDialog.dismiss();
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(arg0.getLatitude(), arg0.getLongitude()), zoomLevel));
+//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(arg0.getLatitude(), arg0.getLongitude()), zoomLevel));
 
-                    clat = arg0.getLatitude();
-                    clang = arg0.getLongitude();
+//                    clat = arg0.getLatitude();
+//                    clang = arg0.getLongitude();
 
                     final LatLng start = new LatLng(clat, clang);
                     LatLng waypoint = new LatLng(clat, clang);
@@ -222,13 +290,11 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
                 }
 
 
-
             }
         });
 
 
     }
-
 
 
     private Bitmap getMarkerBitmapFromView(@DrawableRes int resId) {
@@ -332,38 +398,37 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
             tripDistance = (route.get(i).getDistanceValue() / 1000) + "";
 
 
-        LatLng from_Latlng=new LatLng(clat,clang);
-        LatLng to_Latlong=new LatLng(tolat,tolang);
+            LatLng from_Latlng = new LatLng(clat, clang);
+            LatLng to_Latlong = new LatLng(tolat, tolang);
 
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        builder.include(from_Latlng);
-        builder.include(to_Latlong);
-        LatLngBounds bounds = builder.build();
-        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(route.get(0).getLatLgnBounds(), 10), 2000, null);
-
-
-
-        // Start marker
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            builder.include(from_Latlng);
+            builder.include(to_Latlong);
+            LatLngBounds bounds = builder.build();
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(route.get(0).getLatLgnBounds(), 10), 2000, null);
 
 
-        MarkerOptions marker1 = new MarkerOptions()
-                .position(new LatLng(clat, clang))
-                .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(R.mipmap.ic_launcher)));
-
-        mMap.addMarker(marker1);
+            // Start marker
 
 
-        MarkerOptions marker2 = new MarkerOptions()
-                .position(new LatLng(tolat, tolang))
-                .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(R.drawable.descccc)));
+            MarkerOptions marker1 = new MarkerOptions()
+                    .position(new LatLng(clat, clang))
+                    .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(R.mipmap.ic_launcher)));
 
-        mMap.addMarker(marker2);
-
-
-        // Start marker
+            mMap.addMarker(marker1);
 
 
-    }
+            MarkerOptions marker2 = new MarkerOptions()
+                    .position(new LatLng(tolat, tolang))
+                    .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(R.drawable.descccc)));
+
+            mMap.addMarker(marker2);
+
+
+            // Start marker
+
+
+        }
     }
 
     @Override

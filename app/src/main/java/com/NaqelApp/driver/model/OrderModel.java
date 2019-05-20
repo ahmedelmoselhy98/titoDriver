@@ -1,10 +1,12 @@
 package com.NaqelApp.driver.model;
 
+import java.io.Serializable;
+
 /**
  * Created by hazemhabeb on 7/1/18.
  */
 
-public class OrderModel {
+public class OrderModel implements Serializable {
 
     private String id;
     private String userId;
