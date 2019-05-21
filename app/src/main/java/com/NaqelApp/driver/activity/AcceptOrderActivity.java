@@ -679,7 +679,6 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
                     clat = arg0.getLatitude();
                     clang = arg0.getLongitude();
-                    Toast.makeText(AcceptOrderActivity.this, "clat:" + clat, Toast.LENGTH_SHORT).show();
                     firstZoom = 1;
                 }
 

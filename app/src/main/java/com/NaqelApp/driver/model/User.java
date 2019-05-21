@@ -5,12 +5,12 @@ package com.NaqelApp.driver.model;
  */
 
 public class User {
-    private String id;
-    private String email;
-    private String phone;
-    private String token;
-    private String name;
-    private String photoUrl;
+    private String id = "";
+    private String email = "";
+    private String phone = "";
+    private String token = "";
+    private String name = "";
+    private String photoUrl = "";
 
     public User() {
     }

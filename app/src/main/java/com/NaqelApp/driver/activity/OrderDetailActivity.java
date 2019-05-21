@@ -186,8 +186,9 @@ public class OrderDetailActivity extends AppCompatActivity implements GoogleMap.
                     User model = dataSnapshot.getValue(User.class);
 
                     nameTV.setText(model.getName());
-                    if (!model.getPhotoUrl().isEmpty())
-                        Glide.with(OrderDetailActivity.this).load(model.getPhotoUrl()).into(imageIV);
+
+                        if (!model.getPhotoUrl().isEmpty())
+                            Glide.with(OrderDetailActivity.this).load(model.getPhotoUrl()).into(imageIV);
 
                 }
 
