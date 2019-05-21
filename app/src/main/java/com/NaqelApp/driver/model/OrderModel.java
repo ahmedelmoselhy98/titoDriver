@@ -39,6 +39,21 @@ public class OrderModel implements Serializable {
     public OrderModel() {
     }
 
+    public String getcAddress() {
+        return cAddress;
+    }
+
+    public void setcAddress(String cAddress) {
+        this.cAddress = cAddress;
+    }
+
+    public String getToAddress() {
+        return toAddress;
+    }
+
+    public void setToAddress(String toAddress) {
+        this.toAddress = toAddress;
+    }
 
     public String getId() {
         return id;

@@ -3,10 +3,12 @@ package com.NaqelApp.driver.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -19,6 +21,9 @@ import android.widget.TextView;
 
 import com.NaqelApp.driver.R;
 import com.NaqelApp.driver.model.OrderModel;
+import com.NaqelApp.driver.model.User;
+import com.NaqelApp.driver.model.UserRate;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -41,21 +46,33 @@ public class FinishActivity extends AppCompatActivity implements
         OnMapReadyCallback {
 
     //init the views
-    @BindView(R.id.paidPriceBtn)Button paidPriceBtn;
-    @BindView(R.id.priceTV)TextView priceTV;
+    @BindView(R.id.paidPriceBtn)
+    Button paidPriceBtn;
+    @BindView(R.id.priceTV)
+    TextView priceTV;
     // here to add the price parent
-    @BindView(R.id.enterPriceParent)CardView enterPriceParent;
-    @BindView(R.id.priceParent)CardView priceParent;
-    @BindView(R.id.priceET)EditText priceET;
-    @BindView(R.id.confirmPriceBtn)Button confirmPriceBtn;
+    @BindView(R.id.enterPriceParent)
+    CardView enterPriceParent;
+    @BindView(R.id.priceParent)
+    CardView priceParent;
+    @BindView(R.id.priceET)
+    EditText priceET;
+    @BindView(R.id.confirmPriceBtn)
+    Button confirmPriceBtn;
     // to confirm the price
-    @BindView(R.id.paidPriceTV)TextView paidPriceTV;
-    @BindView(R.id.finishPriceBtn)Button finishPriceBtn;
-    @BindView(R.id.editPriceBtn)Button editPriceBtn;
-    @BindView(R.id.confirmParent)CardView confirmParent;
+    @BindView(R.id.paidPriceTV)
+    TextView paidPriceTV;
+    @BindView(R.id.finishPriceBtn)
+    Button finishPriceBtn;
+    @BindView(R.id.editPriceBtn)
+    Button editPriceBtn;
+    @BindView(R.id.confirmParent)
+    CardView confirmParent;
     // the rate
-    @BindView(R.id.rateParent)CardView rateParent;
-    @BindView(R.id.rateRB)RatingBar rateRB;
+    @BindView(R.id.rateParent)
+    CardView rateParent;
+    @BindView(R.id.rateRB)
+    RatingBar rateRB;
 
     private GoogleMap mMap;
     private static final String TAG = "google";
@@ -67,11 +84,13 @@ public class FinishActivity extends AppCompatActivity implements
     //init the firebase
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
-    private DatabaseReference  dfUpdateOrder;
+    private DatabaseReference dfUpdateOrder;
 
     //here to get the data from the intent
     private String orderId;
     private double tripPrice;
+
+    UserRate userRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +101,7 @@ public class FinishActivity extends AppCompatActivity implements
 
         priceParent.setVisibility(View.VISIBLE);
         enterPriceParent.setVisibility(View.GONE);
+
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("جاري تحديد الموقع...");
@@ -101,13 +121,15 @@ public class FinishActivity extends AppCompatActivity implements
 
         // here the order id
         orderId = getIntent().getStringExtra("order");
-        tripPrice = getIntent().getDoubleExtra("price",0);
+        tripPrice = getIntent().getDoubleExtra("price", 0);
 
+
+        userRate = new UserRate();
 
         if (orderId == null)
             return;
 
-        priceTV.setText(tripPrice+" ريال ");
+        priceTV.setText(tripPrice + " ريال ");
 
         getOrderData();
 
@@ -115,6 +137,25 @@ public class FinishActivity extends AppCompatActivity implements
 
     }
 
+
+    private void getUserRate() {
+        dfUpdateOrder.child("userRate").child(order.getUserId()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    userRate = dataSnapshot.getValue(UserRate.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
 
     /**
      * here to get the data from the firebase for the order and listen if any com.NaqelApp.com.NaqelApp.driver
@@ -130,6 +171,7 @@ public class FinishActivity extends AppCompatActivity implements
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 order = dataSnapshot.getValue(OrderModel.class);
+                getUserRate();
 
 
                 Log.d("google", "order id   قصثثثصهفهفهفهفهفهفهف  " + orderId);
@@ -174,8 +216,6 @@ public class FinishActivity extends AppCompatActivity implements
                     if (order.getDriverId().equals(mFirebaseUser.getUid())) {
 
 
-
-
                     } else {
 
                     }
@@ -186,8 +226,6 @@ public class FinishActivity extends AppCompatActivity implements
                 }
 
 
-
-
             }
 
             @Override
@@ -196,7 +234,9 @@ public class FinishActivity extends AppCompatActivity implements
         };
         df.addValueEventListener(postListener);
     }
+
     private static final String GEO_FIRE_DB = "https://tito-c762f.firebaseio.com/";
+
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -244,30 +284,62 @@ public class FinishActivity extends AppCompatActivity implements
     }
 
     // action the paid button
-    @OnClick(R.id.paidPriceBtn)void paidAction(){
+    @OnClick(R.id.paidPriceBtn)
+    void paidAction() {
         priceParent.setVisibility(View.GONE);
         enterPriceParent.setVisibility(View.VISIBLE);
     }
-    @OnClick(R.id.confirmPriceBtn)void cofirmPriceAction(){
+
+    @OnClick(R.id.confirmPriceBtn)
+    void cofirmPriceAction() {
         if (priceET.getText().toString().isEmpty())
             return;
         confirmParent.setVisibility(View.VISIBLE);
-        paidPriceTV.setText(priceET.getText()+" ريال ");
-    }
-    @OnClick(R.id.finishPriceBtn)void finishActionBtn(){
-
-        dfUpdateOrder.child("Orders")
-                .child(orderId).child("status").setValue("5");
-        finish();
+        paidPriceTV.setText(priceET.getText() + " ريال ");
     }
 
-    @OnClick(R.id.editPriceBtn)void editPriceAction(){
+    @OnClick(R.id.finishPriceBtn)
+    void finishActionBtn() {
+
+        rateParent.setVisibility(View.VISIBLE);
+        confirmParent.setVisibility(View.GONE);
+
+    }
+
+    @OnClick(R.id.editPriceBtn)
+    void editPriceAction() {
         confirmParent.setVisibility(View.GONE);
     }
 
 
     //todo here to add the rate
-    @OnClick(R.id.rateBtn)void RateAction(){
+    @OnClick(R.id.rateBtn)
+    void RateAction() {
+
+        int numrate = Integer.parseInt(userRate.getNumrate());
+        double rate = Double.parseDouble(userRate.getRate());
+        double totalrate = Double.parseDouble(userRate.getTotalrate());
+
+        numrate++;
+        totalrate = totalrate + rateRB.getRating();
+
+        rate = totalrate / numrate;
+
+
+        dfUpdateOrder.child("userRate")
+                .child(order.getUserId()).child("numrate").setValue("" + numrate);
+
+        dfUpdateOrder.child("userRate")
+                .child(order.getUserId()).child("totalrate").setValue("" + totalrate);
+
+
+        dfUpdateOrder.child("userRate")
+                .child(order.getUserId()).child("rate").setValue("" + rate);
+
+
+        dfUpdateOrder.child("Orders")
+                .child(orderId).child("status").setValue("5");
+        finish();
 
     }
 

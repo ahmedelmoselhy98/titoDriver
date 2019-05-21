@@ -55,8 +55,11 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             holder.priceTV.setText("SAR 0.0");
 
         holder.dateTV.setText(holder.handleDateFormat(Long.parseLong(list.get(i).getTime())));
-        holder.fromTV.setText("(lat: " + list.get(i).getLat() + ", lon: " + list.get(i).getLang() + ")");
-        holder.toTV.setText("(lat: " + list.get(i).getToLat() + ", lon: " + list.get(i).getToLang() + ")");
+//        holder.fromTV.setText("(lat: " + list.get(i).getLat() + ", lon: " + list.get(i).getLang() + ")");
+//        holder.toTV.setText("(lat: " + list.get(i).getToLat() + ", lon: " + list.get(i).getToLang() + ")");
+        holder.fromTV.setText(list.get(i).getcAddress());
+        holder.toTV.setText(list.get(i).getToAddress());
+
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

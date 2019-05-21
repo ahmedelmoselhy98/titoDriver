@@ -71,7 +71,8 @@ public class MyOrdersActivity extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         if (snapshot.exists()) {
                             OrderModel model = snapshot.getValue(OrderModel.class);
-                            orderModels.add(model);
+                            if (model.getDriverId().equals(mFirebaseUser.getUid()))
+                                orderModels.add(model);
                         }
                     }
                     adapter = new MyOrdersAdapter(MyOrdersActivity.this, orderModels);

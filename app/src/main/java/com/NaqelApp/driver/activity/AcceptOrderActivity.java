@@ -166,6 +166,7 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
     SharedPrefDueDate pref;
 
+    double currentlat, currentlang;
     double clat, clang;
     double tolat, tolang;
 
@@ -331,7 +332,7 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
                         tolat = Double.parseDouble(order.getToLat());
                         tolang = Double.parseDouble(order.getToLang());
-                        LatLng start = new LatLng(clat, clang);
+                        LatLng start = new LatLng(Double.parseDouble(order.getLat()), Double.parseDouble(order.getLang()));
                         LatLng waypoint = new LatLng(tolat, tolang);
                         LatLng end = new LatLng(tolat, tolang);
 
@@ -496,16 +497,15 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
                 .child(orderId).child("startTime").setValue(startTime + "");
 
 
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
         // Todo update start location
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("cAddress").setValue(getCompleteAddressString(clat, clang));
+                .child(orderId).child("cAddress").setValue(getCompleteAddressString(currentlat, currentlang));
 
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("lat").setValue("" + clat);
+                .child(orderId).child("lat").setValue("" + currentlat);
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("lang").setValue("" + clang);
+                .child(orderId).child("lang").setValue("" + currentlang);
 
 
         dfUpdateOrder.child("Orders")
@@ -554,12 +554,12 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
         // Todo update end location
 
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("toAddress").setValue(getCompleteAddressString(clat, clang));
+                .child(orderId).child("toAddress").setValue(getCompleteAddressString(currentlat, currentlang));
 
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("toLat").setValue(""+clat);
+                .child(orderId).child("toLat").setValue(""+currentlat);
         dfUpdateOrder.child("Orders")
-                .child(orderId).child("toLang").setValue(""+clang);
+                .child(orderId).child("toLang").setValue(""+currentlang);
 
 
         dfUpdateOrder.child("Orders")
@@ -685,8 +685,9 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
                 String GEO_FIRE_REF = GEO_FIRE_DB + "/GeoFire";
                 GeoFire geoFire = new GeoFire(FirebaseDatabase.getInstance().getReference().child("GeoFire"));
-                geoFire.setLocation(mFirebaseUser.getUid(), new GeoLocation(arg0.getLatitude(), arg0.getLatitude()));
-
+                geoFire.setLocation(mFirebaseUser.getUid(), new GeoLocation(arg0.getLatitude(), arg0.getLongitude()));
+                currentlat = arg0.getLatitude();
+                currentlang = arg0.getLongitude();
 
             }
         });
@@ -723,7 +724,6 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 //        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
         float zoomLevel = (float) 14.0;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), zoomLevel));
-        Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show();
 
     }
 
