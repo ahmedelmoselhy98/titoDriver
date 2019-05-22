@@ -74,7 +74,9 @@
                 android:layout_height="80dp"
                 android:id="@+id/imageIV"
                 android:layout_marginLeft="8dp"
-                android:src="@drawable/looogooo" />
+                android:background="@drawable/back_user_image"
+                android:src="@drawable/account"
+                tools:ignore="VectorDrawableCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:id="@+id/rateRB"
-                android:rating="3" />
+                android:rating="4" />
                  />
 
         </LinearLayout>

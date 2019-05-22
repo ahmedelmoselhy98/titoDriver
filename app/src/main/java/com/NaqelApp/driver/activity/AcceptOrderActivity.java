@@ -193,7 +193,7 @@ public class AcceptOrderActivity extends AppCompatActivity implements GoogleMap.
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("جاري تحديد الموقع...");
-        progressDialog.show();
+//        progressDialog.show();
 
         firstZoom = 0;
 

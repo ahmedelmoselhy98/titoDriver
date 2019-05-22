@@ -105,7 +105,7 @@ public class FinishActivity extends AppCompatActivity implements
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("جاري تحديد الموقع...");
-        progressDialog.show();
+//        progressDialog.show();
 
         firstZoom = 0;
 
