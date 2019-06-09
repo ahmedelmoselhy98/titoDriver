@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/back3"
     android:layoutDirection="ltr">
 
     <!--<view-->
@@ -17,9 +17,10 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#90000000"
         android:layoutDirection="ltr"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#99000000"
+        >
 
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -124,7 +125,7 @@
                     android:layout_marginRight="40dp"
                     android:textAllCaps="true"
                     android:onClick="register"
-                    android:textColor="#FFF"
+                    android:textColor="@color/wight"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 

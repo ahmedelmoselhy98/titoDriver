@@ -1,96 +1,52 @@
 {
   "project_info": {
-    "project_number": "351623962775",
-    "firebase_url": "https://naqel-b56cf.firebaseio.com",
-    "project_id": "naqel-b56cf",
-    "storage_bucket": "naqel-b56cf.appspot.com"
+    "project_number": "257412246317",
+    "firebase_url": "https://tito-c762f.firebaseio.com",
+    "project_id": "tito-c762f",
+    "storage_bucket": "tito-c762f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:351623962775:android:f98f9f0b343e0ebf",
+        "mobilesdk_app_id": "1:257412246317:android:35eec1f8dd20cfc9",
         "android_client_info": {
-          "package_name": "com.NaqelApp.driver"
+          "package_name": "com.TitoApp.driver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "351623962775-3619id5g6n2t6cf0mq147j43e1t16tt2.apps.googleusercontent.com",
+          "client_id": "257412246317-9pepn5kebfk441b45puje2h74tas6h13.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.NaqelApp.driver",
+            "package_name": "com.TitoApp.driver",
             "certificate_hash": "238967f33c70fdf646b3dbc4f9e7dc3c5153b95c"
           }
         },
         {
-          "client_id": "351623962775-4n0nau3o17o264s0qin66jklfecpta0f.apps.googleusercontent.com",
+          "client_id": "257412246317-sd187j4m76rhpl8erf4i0e04egev1f09.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBiLdBzNVaImU_ky0w3tXnfDYIlx31OTlw"
+          "current_key": "AIzaSyAtgKtF1q3GUUOM0QxIomPm9mdYVhCrU9k"
         }
       ],
       "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "351623962775-4n0nau3o17o264s0qin66jklfecpta0f.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "351623962775-iud8i6n7rn3o7d9anuogrj39oo3no8si.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.Orxtra.NaqelApp"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:351623962775:android:6f0c7113270d4ae8",
-        "android_client_info": {
-          "package_name": "com.OrxtraDev.naqelapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "351623962775-f9h1m60blqqi5v072lb4j9e3odh7c42t.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.OrxtraDev.naqelapp",
-            "certificate_hash": "9c0606aad59d4bb9c73d1ec0c17454ca365556a8"
-          }
+        "analytics_service": {
+          "status": 1
         },
-        {
-          "client_id": "351623962775-4n0nau3o17o264s0qin66jklfecpta0f.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBiLdBzNVaImU_ky0w3tXnfDYIlx31OTlw"
-        }
-      ],
-      "services": {
         "appinvite_service": {
+          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "351623962775-4n0nau3o17o264s0qin66jklfecpta0f.apps.googleusercontent.com",
+              "client_id": "257412246317-sd187j4m76rhpl8erf4i0e04egev1f09.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "351623962775-iud8i6n7rn3o7d9anuogrj39oo3no8si.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.Orxtra.NaqelApp"
-              }
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
         }
       }
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.NaqelApp.driver">
+    package="com.TitoApp.driver">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,8 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.OrderDetailActivity"></activity>
-        <activity android:name=".activity.MyOrdersActivity" />
+        <activity android:name="com.TitoApp.driver.activity.OrderDetailActivity"></activity>
+        <activity android:name="com.TitoApp.driver.activity.MyOrdersActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -27,21 +27,21 @@
             android:required="false" />
 
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.TitoApp.driver.activity.LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.RegisterActivity"
+            android:name="com.TitoApp.driver.activity.RegisterActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".activity.PaperActivity" />
-        <activity android:name=".activity.VerifyActivity">
+        <activity android:name="com.TitoApp.driver.activity.PaperActivity" />
+        <activity android:name="com.TitoApp.driver.activity.VerifyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MapsActivity" />
-        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name="com.TitoApp.driver.activity.MapsActivity" />
+        <activity android:name="com.TitoApp.driver.activity.ProfileActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -59,22 +59,22 @@
         </provider>
 
         <activity
-            android:name=".activity.UpdateProfileActivity"
+            android:name="com.TitoApp.driver.activity.UpdateProfileActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.CarPapersActivity"
+            android:name="com.TitoApp.driver.activity.CarPapersActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".activity.UserPaperActivity" />
-        <activity android:name=".activity.WalletActivity" /> <!-- //notifaction -->
+        <activity android:name="com.TitoApp.driver.activity.UserPaperActivity" />
+        <activity android:name="com.TitoApp.driver.activity.WalletActivity" /> <!-- //notifaction -->
         <service
-            android:name=".notification.MyFirebaseMessagingService"
+            android:name="com.TitoApp.driver.notification.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name=".notification.MyFirebaseInstanceIdService"
+            android:name="com.TitoApp.driver.notification.MyFirebaseInstanceIdService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -85,17 +85,17 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
 
-        <activity android:name=".activity.AcceptOrderActivity" />
-        <activity android:name=".activity.Splash">
+        <activity android:name="com.TitoApp.driver.activity.AcceptOrderActivity" />
+        <activity android:name="com.TitoApp.driver.activity.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FinishActivity" />
+        <activity android:name="com.TitoApp.driver.activity.FinishActivity" />
         <activity
-            android:name=".activity.ForgotPasswordActivity"
+            android:name="com.TitoApp.driver.activity.ForgotPasswordActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 

@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/back3"
+    >
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/main_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#99000000">
+        android:background="#99000000"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -275,7 +277,7 @@
                     android:paddingRight="60dp"
                     android:text="تسجيل"
                     android:textAllCaps="true"
-                    android:textColor="#FFF"
+                    android:textColor="@color/wight"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 

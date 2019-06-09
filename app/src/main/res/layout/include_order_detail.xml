@@ -84,6 +84,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="ahme mohamed"
                 android:id="@+id/nameTV"
+                android:gravity="start"
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
