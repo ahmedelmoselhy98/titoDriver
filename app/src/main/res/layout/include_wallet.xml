@@ -22,7 +22,6 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:onClick="Home"
                 app:srcCompat="@drawable/wallet"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-smallcaps"
-                android:text=" يوجد الان في المحفظة الخاصه بك "
+                android:text="اجمالى المدفوع"
                 android:layout_gravity="center"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
@@ -39,7 +38,33 @@
                 android:gravity="center"
                 />
             <TextView
-                android:id="@+id/tvPname"
+                android:id="@+id/totalPaidPriceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="0 EGP"
+                android:textColor="@color/gray"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="نسبة الشركة"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:textColor="@color/gray"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/companyMoneyTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-smallcaps"

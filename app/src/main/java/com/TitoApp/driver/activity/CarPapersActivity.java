@@ -123,7 +123,7 @@ public class CarPapersActivity extends AppCompatActivity implements IPickResult 
 
         data = new ArrayList<>();
         data.add(new CategLocal(R.drawable.car0, "تيتو", "تيتو", "-L_wEOtpCYemDnlzh7Ys"));
-        data.add(new CategLocal(R.drawable.car1, "تيتو بلس", "تيتو بلس", "-Leuhw2vW9-CGQfsPr6h"));
+        data.add(new CategLocal(R.drawable.car1, "تيتو بلس", "تيتو بلس", "-L_wEW_Y_YFhvEJgcccC"));
 
 
 
@@ -286,8 +286,8 @@ public class CarPapersActivity extends AppCompatActivity implements IPickResult 
 
 
 
-        mFirebaseDatabaseReference.child("Cars")
-                .child(car.getId()).setValue(car);
+//        mFirebaseDatabaseReference.child("Cars")
+//                .child(car.getId()).setValue(car);
 
         loading.setVisibility(View.GONE);
 

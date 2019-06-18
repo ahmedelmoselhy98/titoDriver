@@ -50,8 +50,6 @@ public class ProfileActivity extends AppCompatActivity {
         df = FirebaseDatabase.getInstance().getReference();
 
 
-
-
         df = FirebaseDatabase.getInstance().getReference().child("Drivers").child(mFirebaseUser.getUid());
         ValueEventListener postListener = new ValueEventListener() {
             @Override

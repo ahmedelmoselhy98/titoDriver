@@ -8,11 +8,19 @@ public class WalletModel {
     private String clientId = "";
     private String price = "";
     private String paidPrice = "";
+    private String time = "";
 
     public WalletModel() {
 
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getTripId() {
         return tripId;

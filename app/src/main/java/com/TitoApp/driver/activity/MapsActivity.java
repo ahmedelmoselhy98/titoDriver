@@ -38,6 +38,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.TitoApp.driver.R;
 import com.TitoApp.driver.model.DriverModel;
@@ -691,6 +692,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
 
                 Intent intent = new Intent(MapsActivity.this, AcceptOrderActivity.class);
                 intent.putExtra("order", event.getTripId());
+                Toast.makeText(MapsActivity.this, "id:"+event.getTripId(), Toast.LENGTH_SHORT).show();
                 startActivity(intent);
 
 

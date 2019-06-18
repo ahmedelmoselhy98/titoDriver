@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:orientation="vertical"
             android:paddingTop="20dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,7 +132,6 @@
                     android:text="اقبل"
                     android:textAllCaps="false"
                     android:textColor="#FFF"
-
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -341,19 +340,11 @@
                 android:textSize="25dp"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 />
 
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/destinationBTn"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_marginBottom="20dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--app:srcCompat="@drawable/navigation"/>-->
 
             <Button
                 android:id="@+id/destinationBTn"
@@ -366,7 +357,7 @@
 
                 android:textSize="30sp"
                 android:textColor="@color/gray_text"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
 
         

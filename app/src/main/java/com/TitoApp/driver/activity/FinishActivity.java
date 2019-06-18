@@ -324,6 +324,10 @@ public class FinishActivity extends AppCompatActivity implements
         rate = totalrate / numrate;
 
 
+
+        dfUpdateOrder.child("userRate")
+                .child(order.getUserId()).child("id").setValue(order.getUserId());
+
         dfUpdateOrder.child("userRate")
                 .child(order.getUserId()).child("numrate").setValue("" + numrate);
 
@@ -344,12 +348,11 @@ public class FinishActivity extends AppCompatActivity implements
         WalletModel wallet = new WalletModel();
 
         wallet.setTripId(orderId);
+        wallet.setTime(""+System.currentTimeMillis());
         wallet.setClientId(order.getUserId());
         wallet.setDriverId(order.getDriverId());
         wallet.setPaidPrice(priceET.getText().toString());
         wallet.setPrice(order.getTripPrice());
-
-
         dfUpdateOrder.child("Wallet").child(wallet.getTripId()).setValue(wallet);
 
         finish();
