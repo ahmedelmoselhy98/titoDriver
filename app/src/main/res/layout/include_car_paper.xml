@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
+    android:background="@drawable/back3"
+    >
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            android:orientation="vertical">
+
+
+
+
+            <LinearLayout
+                android:id="@+id/parent_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="رخصه السيارة"
+                    android:textColor="@color/gray"
+
+                    android:layout_marginTop="20dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+                <FrameLayout
+                    android:id="@+id/imageParent"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp">
+
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        app:srcCompat="@drawable/camera_back"
+                        android:background="@drawable/back_signup"
+                         />
+
+                    <ImageView
+                        android:id="@+id/favorImage"
+                        android:layout_width="120dp"
+                        android:scaleType="centerCrop"
+                        android:padding="5dp"
+                        android:layout_height="120dp" />
+                    <ImageView
+                        android:id="@+id/take_photo_profile"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/camera_party_mode"
+                        />
+
+                </FrameLayout>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/selectcategCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="5dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        android:background="@drawable/back_order">
+
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="25dp"
+                            android:layout_gravity="left|center"
+                            android:layout_marginRight="10dp"
+                            app:srcCompat="@drawable/chevron_down"/>
+
+
+
+
+
+                        <TextView
+                            android:id="@+id/categTV"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="40dp"
+                            android:gravity="center|right"
+                            android:textSize="16sp"
+                            android:text="تيتو"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/black" />
+
+
+
+
+
+                        <ImageView
+                            android:id="@+id/categIV"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="35dp"
+                            android:layout_gravity="left|center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/car0"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="5">
+                    <EditText
+                        android:id="@+id/colorET"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:hint="ادخل  لون السيارة"
+                        android:paddingLeft="10dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="30dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="14sp" />
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="right|center"
+                            app:srcCompat="@drawable/car_color"
+                            />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="30dp"
+                        android:hint="لون السيارة"
+                        android:paddingLeft="10dp"
+                        android:inputType="phone"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="5">
+                    <EditText
+                        android:id="@+id/typeET"
+                        android:layout_width="match_parent"
+                        android:layout_weight="5"
+                        android:layout_height="35dp"
+                        android:hint="ادخل نوع السيارة"
+                        android:paddingLeft="10dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="30dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="14sp" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="right|center"
+                            app:srcCompat="@drawable/car_paper"
+                            />
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="30dp"
+                        android:hint="نوع السيارة"
+                        android:paddingLeft="10dp"
+                        android:inputType="phone"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="5">
+                    <EditText
+                        android:id="@+id/modelET"
+                        android:layout_width="match_parent"
+                        android:layout_weight="5"
+                        android:layout_height="35dp"
+                        android:hint="ادخل موديل السيارة"
+                        android:paddingLeft="10dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="30dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="14sp" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="right|center"
+                            app:srcCompat="@drawable/car_paper"
+                            />
+
+                    </FrameLayout>
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="30dp"
+                        android:hint="موديل السيارة"
+                        android:paddingLeft="10dp"
+                        android:inputType="phone"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="5">
+                    <EditText
+                        android:id="@+id/yearET"
+                        android:layout_width="match_parent"
+                        android:layout_weight="5"
+                        android:layout_height="35dp"
+                        android:hint="ادخل سنه الصنع"
+                        android:paddingLeft="10dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="30dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="16sp" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="right|center"
+                            app:srcCompat="@drawable/car_time"
+                            />
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="30dp"
+                        android:hint="سنة الصنع"
+                        android:paddingLeft="10dp"
+                        android:inputType="phone"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="5">
+                    <EditText
+                        android:id="@+id/numberET"
+                        android:layout_width="match_parent"
+                        android:layout_weight="5"
+                        android:layout_height="35dp"
+                        android:hint="ادخل رقم اللوحة"
+                        android:paddingLeft="10dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="30dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="right|center"
+                            app:srcCompat="@drawable/car_paper" />
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="30dp"
+                        android:hint="رقم اللوحة"
+                        android:paddingLeft="10dp"
+                        android:inputType="phone"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center|right"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/back_signup"
+                        android:textColorHint="@color/gray_text"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/carPaperBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/signup_button_back"
+                    android:text="حفظ"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="40dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="40dp"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="@color/wight"
+                    android:textSize="14sp"/>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="?android:colorAccent"
+        android:indeterminateTintMode="src_in"
+        android:visibility="gone" />
+</FrameLayout>

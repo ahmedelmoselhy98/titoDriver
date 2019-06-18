@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/activity_maps" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/priceParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:cardElevation="4dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:cardCornerRadius="5dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+                android:text="سعر الرحلة"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/priceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="35sp"
+                android:text="200 SAR"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                />
+
+
+            <Button
+                android:id="@+id/paidPriceBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="40dp"
+
+                android:background="@drawable/button_background_1"
+                android:text="قم بادخال المبلغ المدفوع"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/gray_text"
+                android:visibility="visible" />
+
+
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/enterPriceParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:cardElevation="4dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        app:cardCornerRadius="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/priceET"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="28dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:inputType="number"
+            android:hint="قم بإدخال المبلغ المدفوع"
+            android:background="@drawable/back_enter_price"
+
+            />
+
+        <Button
+            android:id="@+id/confirmPriceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/back_new_trip"
+            android:text="تاكيد"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/wight"
+            android:visibility="visible" />
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/confirmParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:cardElevation="4dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        app:cardCornerRadius="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+                android:text="المبلغ المحصل"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/paidPriceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="35sp"
+                android:text="200 SAR"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                />
+
+            <Button
+                android:id="@+id/finishPriceBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/back_new_trip"
+                android:text="تاكيد"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/wight"
+                android:visibility="visible" />
+            <Button
+                android:id="@+id/editPriceBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/back_edit_price"
+                android:text="تعديل"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/wight"
+                android:visibility="visible" />
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/rateParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:cardElevation="4dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        app:cardCornerRadius="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+                android:text="قم بادخال التقييم لهذه الرحلة"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                />
+            <RatingBar
+                android:id="@+id/rateRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
+
+
+            <Button
+                android:id="@+id/rateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/back_new_trip"
+                android:text="تاكيد"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:textSize="25sp"
+                android:textColor="@color/wight"
+                android:visibility="visible" />
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+</android.support.design.widget.CoordinatorLayout>

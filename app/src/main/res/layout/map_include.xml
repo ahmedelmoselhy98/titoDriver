@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true">
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <include layout="@layout/activity_maps" />
+        <include layout="@layout/accept_dailoge"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="?actionBarSize">
+
+            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--android:id="@+id/ivHostImage"-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@drawable/profile_image"-->
+            <!--app:civ_border_color="#fff"-->
+            <!--app:civ_border_width="2dp" />-->
+
+            <ImageView
+                android:id="@+id/menuIV"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|start"
+                app:srcCompat="@drawable/map_menu" />
+
+            <Switch
+                android:id="@+id/availableSW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/wight"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                android:text="  غير نشط  " />
+
+
+        </FrameLayout>
+
+
+
+
+
+
+
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nvView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/navigationdrawer_main" />
+
+</android.support.v4.widget.DrawerLayout>
